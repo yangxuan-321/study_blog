@@ -31,7 +31,7 @@
     
     
     问题解决：
-        如果第2步骤出错：
+        1.如果第2步骤出错：
             OpenJDK 64-Bit Server VM warning: Using the DefNew young collector with the CMS collector is deprecated and will likely be removed in a future release
             OpenJDK 64-Bit Server VM warning: UseCMSCompactAtFullCollection is deprecated and will likely be removed in a future release.
             OpenJDK 64-Bit Server VM warning: INFO: os::commit_memory(0x00000006ec800000, 2147483648, 0) failed; error='Cannot allocate memory' (errno=12)
@@ -41,6 +41,10 @@
             # An error report file with more information is saved as:
             # /opt/rocketmq-4.3.2/bin/hs_err_pid9.log
             
-        这说明你的服务器内存不足了。
         
-     
+        2. 在docker下运行RocketMQ时，通过java客户端远程调用，namesrv返回的是docker容器的地址，java客户端无法访问到。
+            https://blog.csdn.net/upcye/article/details/53888388
+            可以通过配置brokerIP1 = 实际ip 解决。（本机ip地址，默认系统自动识别，但是某些多网卡机器会存在识别错误的情况，这种情况下可以人工配置 解决。
+            配置步骤见第4步。
+            
+            切记配置文件是在broker容器内的 /etc/rocketmq/broker.conf下面
