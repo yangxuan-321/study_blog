@@ -27,7 +27,9 @@
         docker run --name rmqconsole -p 8180:8080 --link rmqserver:namesrv -e "JAVA_OPTS=-Drocketmq.namesrv.addr=namesrv:9876 -Dcom.rocketmq.sendMessageWithVIPChannel=false" -t styletang/rocketmq-console-ng
         
     -----------------------------至此,docker中安装rocketmq已经完成---------------------    
-        
+    访问 ip:8180就可以访问控制台
+    
+    
     问题解决：
         如果第2步骤出错：
             OpenJDK 64-Bit Server VM warning: Using the DefNew young collector with the CMS collector is deprecated and will likely be removed in a future release
